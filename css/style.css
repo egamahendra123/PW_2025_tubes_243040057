@@ -1,0 +1,88 @@
+.warna1 {
+    background-color: #AE7A36;
+}
+
+.warna2 {
+    background-color: #D8AF18;
+}
+
+.warna3 {
+    background-color:#D1DB00;
+}
+
+.warna4 {
+    background-color: #947E68;
+}
+
+.banner {
+   height: 80vh;
+   background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('../image/backround.png');
+}
+
+.highlighted-kategori {
+    height: 250px;
+}
+
+.kategori-baju-pria {
+   background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('../image/VDZM4x8hejafY8YhswKq.jpeg');
+   background-size: cover;
+   background-position: center top;
+
+}
+
+.kategori-baju-wanita {
+   background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('../image/r1huuq8PTu0UZ4JyPcji.jpeg');
+   background-size: cover;
+   background-position: center top;
+}
+
+.kategori-sepatu {
+   background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('../image/2278whYANaaPoQbhsj1Z.jpeg');
+   background-size: cover;
+   background-position: center ;
+}
+
+.no-decoration {
+    text-decoration: none;
+    color: white;
+}
+
+.no-decoration:hover {
+    color: burlywood;
+}
+
+.text-harga {
+    font-size: 22px;
+    color: #D8AF18;
+}
+
+.image-box {
+    height: 250px;
+}
+
+.image-box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover ;
+    object-position: center ;
+}
+
+.content-subscribe {
+    background-color: rgba(0,0,0,0.47);
+}
+
+.content-subscribe a {
+    color: #fff;
+}
+
+.banner-produk {
+    height: 50vh;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('../image/backround.png');
+}
+
+.produk-terkait-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
