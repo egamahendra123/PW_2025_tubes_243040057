@@ -1,105 +1,134 @@
 <?php
-    session_start();
-    require "koneksi.php";
+session_start();
+require "koneksi.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    
-    <style>
-        body {
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .main {
-            height: 100vh;
-        }
-
-        .login-box {
-            width: 400px;
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .login-box img.logo {
-            width: 80px;
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            border-radius: 8px;
-        }
-
-        .btn-login {
-            background-color: #28a745;
-            border: none;
-            border-radius: 8px;
-        }
-
-        .btn-login:hover {
-            background-color: #218838;
-        }
-
-        .alert {
-            margin-top: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
 </head>
-<body>
-    <div class="main d-flex flex-column justify-content-center align-items-center">
-        <div class="login-box">
-            <img src="image/logo.png" alt="Logo" class="logo">
-            <h4 class="mb-4">Silahkan Login</h4>
-            <form action="" method="post">
-                <div class="mb-3 text-start">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" required>
-                </div>
-                <div class="mb-3 text-start">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" required>
-                </div>
-                <button class="btn btn-login text-white form-control" type="submit" name="loginbtn">Login</button>
-            </form>
 
+<style>
+    body {
+        background-image: url(image/bgfilmku.jpg);
+        background-size: cover;
+        background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+        background-color: #D1D8BE;
+        border-radius: 15px;
+        padding: 40px 35px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s ease;
+    }
+
+    .login-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .btn-success {
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        padding: 10px 0;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #A7C1A8;
+    }
+
+    .alert {
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .text-center p {
+        font-weight: 500;
+        color: #555;
+    }
+
+    .btn-outline-primary {
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 8px 0;
+        font-size: 1rem;
+    }
+</style>
+
+<body>
+    <div class="login-box shadow">
+    <img src="image/logonavbar.png" alt="Logo Klik Kita" style="width: 80px; height: auto;" class="mb-2 mx-auto d-block">
+    <h4 class="text-center mb-4 fw-bold text-warning-emphasis">Login Klik Kita</h4>
+        <form action="" method="post" novalidate>
+            <div class="mb-4">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control form-control-lg" name="username" id="username" required autofocus />
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-lg" name="password" id="password" required />
+            </div>
+            <button class="btn btn-success w-100" type="submit" name="loginbtn">Login</button>
+            <div class="text-center mt-4">
+                <p class="mb-2">Belum punya akun?</p>
+                <a href="regis.php" class="btn btn-outline-primary w-100">Daftar Akun</a>
+            </div>
+        </form>
+
+        <div class="mt-3">
             <?php
-                if(isset($_POST['loginbtn'])){
-                    $username = htmlspecialchars($_POST['username']);
-                    $password = htmlspecialchars($_POST['password']);
-                    
-                    $query = mysqli_query($con, "SELECT * FROM users WHERE username='$username'");
-                    $countdata = mysqli_num_rows($query);
-                    $data = mysqli_fetch_array($query);
-                    
-                    if($countdata>0){
-                        if ($password === $data['password']) {
-                            $_SESSION['username'] = $data['username'];
-                            $_SESSION['role'] = $data['role'];
-                            $_SESSION['login'] = true;
-                            
-                            if($data['role'] == 'admin'){
-                                header('location: adminpanel/index.php');
-                            } else {
-                                header('location: index2.php');
-                            }
-                            exit();
+            if (isset($_POST['loginbtn'])) {
+                $username = htmlspecialchars($_POST['username']);
+                $password = htmlspecialchars($_POST['password']);
+
+                $query = mysqli_query($con, "SELECT * FROM users WHERE username= '$username'");
+                $countdata = mysqli_num_rows($query);
+                $data = mysqli_fetch_array($query);
+
+                if ($countdata > 0) {
+                    if (password_verify($password, $data['password'])) {
+                        $_SESSION['username'] = $data['username'];
+                        $_SESSION['role'] = $data['role'];
+                        $_SESSION['login'] = true;
+
+                        if ($data['role'] === 'admin') {
+                            header('Location: adminpanel/index.php');
                         } else {
-                            echo '<div class="alert alert-warning">Password salah</div>';
+                            header('Location: index2.php');
                         }
+                        exit;
                     } else {
-                        echo '<div class="alert alert-warning">Akun tidak tersedia</div>';
+                        echo '<div class="alert alert-warning mt-2" role="alert">Password salah</div>';
                     }
+                } else {
+                    echo '<div class="alert alert-warning mt-2" role="alert">Akun tidak tersedia</div>';
                 }
+            }
             ?>
         </div>
     </div>
 </body>
+
 </html>
