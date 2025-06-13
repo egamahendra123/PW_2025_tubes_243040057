@@ -15,7 +15,7 @@ require "koneksi.php";
 
 <style>
     body {
-        background-image: url(image/bgfilmku.jpg);
+        background-image: url('image/backroundform.png');
         background-size: cover;
         background-position: center;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,12 +24,12 @@ require "koneksi.php";
         justify-content: center;
         align-items: center;
         padding: 20px;
-    }
-
+        
+    } 
     .login-box {
         width: 100%;
         max-width: 400px;
-        background-color: #D1D8BE;
+        background-color:aliceblue;
         border-radius: 15px;
         padding: 40px 35px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
@@ -78,7 +78,7 @@ require "koneksi.php";
 </style>
 
 <body>
-    <div class="login-box shadow">
+    <div class="login-box shadow body">
     <img src="image/logonavbar.png" alt="Logo Klik Kita" style="width: 80px; height: auto;" class="mb-2 mx-auto d-block">
     <h4 class="text-center mb-4 fw-bold text-warning-emphasis">Login Klik Kita</h4>
         <form action="" method="post" novalidate>
